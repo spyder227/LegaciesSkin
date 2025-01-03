@@ -203,9 +203,9 @@ function createFieldArray(arr, input = false) {
 
 /****** Members Initialization ******/
 function formatMemberRow(type, data, extraFilters = '') {
-    let tagList = ``, info = ``, details = ``, extras = ``;
+    let tagList = ``, info = ``, details = ``;
     if(type === 'character') {
-        tagList += `${data.character.speciesClass} ${data.character.ageClass} ${data.character.relationshipClass} ${data.character.locationClass}`;
+        tagList += `${data.character.ageClass} ${data.character.relationshipClass} ${data.character.locationClass}`;
         info += `<div class="member--stats">
             <span>${data.character.age} years old</span>
             <span>${data.character.pronouns}</span>
@@ -213,7 +213,6 @@ function formatMemberRow(type, data, extraFilters = '') {
             <span>${data.writer.alias}</span>
         </div>`;
         details = data.character.overview;
-        extras += `<div class="member--species">${data.character.species}</div>`;
     } else {
         info += `<div class="member--stats">
             <span>${data.writer.age} years old</span>
@@ -222,18 +221,16 @@ function formatMemberRow(type, data, extraFilters = '') {
             <span>${data.writer.contact}</span>
         </div>`;
         details = data.writer.triggers;
-        extras += `<div class="member--species">Joined ${data.universal.dates.joined}</div>
-        <div class="member--species">Last seen ${data.universal.dates.lastActive}</div>`;
     }
     return `<div class="members--member grid-item g-${data.universal.groupID} ${data.writer.aliasClass} ${type} ${extraFilters} ${tagList}">
         <div class="member">
-            <div class="member--id">N° ${data.universal.id}</div>
             <div class="member--top">
                 <img src="${data.universal.imageWide}" loading="lazy" />
             </div>
             <div class="member--main">
                 <a href="?showuser=${data.universal.id}">${formatName(data.universal.name, 'b')}</a>
-                ${extras}
+                <div class="member--species">Joined ${data.universal.dates.joined}</div>
+                <div class="member--species">Last seen ${data.universal.dates.lastActive}</div>
             </div>
             ${info}
             <div class="member--overview"><div class="scroll">

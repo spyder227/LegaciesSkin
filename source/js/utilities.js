@@ -986,15 +986,37 @@ function initPostRowDescription() {
 }
 function initPostContentAlter() {
     document.querySelectorAll('.post--content .postcolor').forEach(post => {
-        if(!post.querySelector(templateWraps)) {
+        if(post.querySelectorAll(templateWraps).length === 0) {
             post.classList.add('no-template');
         }
     });
     oocGroups.forEach(group => {
-        document.querySelectorAll(`.post:has(.g-${group}) .charOnly`).forEach(item => item.remove());
-    })
+        document.querySelectorAll(`.post.g-${group} .charOnly`).forEach(item => item.remove());
+    });
     optGroups.forEach(group => {
-        document.querySelectorAll(`.post.type-Member:has(.g-${group}) .charOnly`).forEach(item => item.remove());
+        document.querySelectorAll(`.post.type-Member.g-${group} .charOnly`).forEach(item => item.remove());
+    });
+    document.querySelectorAll('.post').forEach(post => {
+        console.log(post.classList);
+        let optOOC = false, oocAlways = false;
+        optGroups.forEach(group => {
+            if(post.classList.contains(`g-${group}`)) {
+                optOOC = true;
+
+                if(post.classList.contains('type-Character')) {
+                    post.querySelectorAll('.oocOnly').forEach(item => item.remove());
+                }
+            }
+        });
+        oocGroups.forEach(group => {
+            if(post.classList.contains(`g-${group}`)) {
+                console.log('contains ooc groups');
+                oocAlways = true;
+            }
+        });
+        if(!oocAlways && !optOOC) {
+            post.querySelectorAll('.oocOnly').forEach(item => item.remove());
+        }
     })
 }
 
@@ -1014,9 +1036,9 @@ function populatePage(array) {
             members.push(member);
         }
 
-        if(oocGroups.contains(array[i].universal.groupID.toString())) {
+        if(oocGroups.includes(array[i].universal.groupID.toString())) {
             html += formatMemberRow('writer', array[i], 'active');
-        } else if (optGroups.contains(array[i].universal.groupID.toString())) {
+        } else if (optGroups.includes(array[i].universal.groupID.toString())) {
             if(array[i].universal.type === 'character') {
                 html += formatMemberRow('character', array[i], 'pending');
             } else {

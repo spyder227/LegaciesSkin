@@ -1,34 +1,55 @@
+//channel name does not have to match, but it makes the most sense if it does
+//for the hook, do not include the full url, just the numeric and alphanumeric strings at the end (e.g., `numeric/alphanumeric`)
 const discordChannels = [
 	{title: `#channel`, hook: `hook code`},
 ];
 
+//member alias and acquire the id by right clicking their name in discord and "copy user id"
+//if you don't see that option in the menu, you need to turn on developer mode
 const discordTags = [
     {alias: `Name`, id: `ID`},
 ];
 
+//role name doesn't have to match, can be contextualized
+//to acquire the id, go to server settings > roles > the three dot menu > copy role id
+//it will not copy with the ampersand but the ampersand is required. ensure all ids start with an ampersand for a role tag
 const discordRoles = [
     {title: `Open`, id: `&ID`},
 ];
 
+//the ampersand does not need to be present for the staffDiscordRole; this is for character sorting, not the tagging system
+const staffDiscordRole = `ID`;
+
+//this is for displaying the avatars for the visual account switcher and the member roster.
+//just make sure the sitename matches and, if it does and the images still don't show, try changes 'uploads2' to 'uploads', sometimes jcink is weird
 const uploads = `uploads2`;
 const siteName = `sitename`;
 const fileTypes = ['gif', 'jpg', 'jpeg', 'png'];
-const staffDiscordRole = `ID`;
 
+//this is for character sorting, highlighting the edge of the sorting related messages
+//the group name should by lowercase and should match what would appear in the Group column of the google sheet
+//the number array is the RGB values, so rgb(0,0,0) would be equivalent to [0,0,0] in this instance
 const colors = {
-    'group': [0, 0, 0],
+    'group name': [0, 0, 0],
 }
 
-const unusable = ['premium species', 'premium group', 'custom complex event', 'custom discord role & icon', 'custom event', 'custom subplot'];
+//if you have items in the shop that you want to hide the "use" button when the item is in inventory, then add the _exact_ item name here in lowercase
+const unusable = ['premium group', 'custom complex event', 'custom discord role & icon', 'custom event', 'custom subplot'];
 
+//set your groups to manage removals of ooc account only elements (.oocOnly), character only elements (.charOnly), and staff only elements (.staffOnly)
 const staffGroups = ['4'];
 const oocGroups = [...staffGroups, '6'];
 const optGroups = ['1', '3', '5'];
 
+//templateWraps should be the class or tag name (if unique and not div) in a comma separated list
+//this will apply the .no-template class if these are NOT present to allow additional styling, padding, etc as a built-in template
 const templateWraps = `tag-wrap`;
+
+//want markdown applied? add the class or tag name here in the comma separated list
 const markdownSafe = `.markdown, .postcolor.no-template, .postcolor blockquote, .postcolor [data-markdown]`;
 
 /** auto-tracker code by FizzyElf - https://fizzyelf.jcink.net **/
+//these are the category and forum ids for a profile-based thread autotracker by fizzyelf
 trackerParams = {
     //include
     includeCategoryIds: [],
@@ -49,20 +70,22 @@ trackerParams = {
     eventHistoryForumIds: [], //event history
 }
 
-const fullWidthFields = [];
-const thirdWidthFields = [];
-const setHeightFields = [];
+//should be plain numbers in a comma separated list, do not wrap in quotes
+const fullWidthFields = [1]; //for ucp that has been gridded, sets the field to span the full grid width
+const thirdWidthFields = []; //for when using manual birthday fields and there are six columns with default being 1/2 width in ucp
+const setHeightFields = []; //for when you want a text area field to allow some coding, apostrophes, etc but want it to look like a standard text input
 
-//toggle fields: account type, power type, image type
-const toggleFields = createFieldArray([0, 0], true);
-const characterFields = createFieldArray([]);
+//toggle fields: account type, image type
+const toggleFields = createFieldArray([1, 2], true);
+const characterFields = createFieldArray([]); //character only fields
 
-const defaultImages = createFieldArray([]);
-const gridImages = createFieldArray([]);
-const mosaicImages = createFieldArray([]);
+const defaultImages = createFieldArray([]); //default aesthetics set up
+const gridImages = createFieldArray([]); //grid style aesthetics set up
+const mosaicImages = createFieldArray([]); //mosaic style aesthetic set up
 
-const avatarImageFields = createFieldArray([]);
+const avatarImageFields = createFieldArray([]); //which images are avatars, not aesthetics?
 
+//shouldn't need to change this
 const aestheticFields = {
     'single': {
         showFields: defaultImages,
@@ -78,6 +101,12 @@ const aestheticFields = {
     }
 };
 
+//sets up a title and a description for each section of the ucp
+//insertBefore is the field number as a number, not a string
+//it will put the header and description before that input
+//you can use html in the description, it'll load right, allowing full customization
+//allHeaders are the headers ALWAYS visible
+//charHeaders are the headers only available for characters
 const allHeaders = [
     {
         sectionTitle: `Player`,
@@ -118,9 +147,16 @@ const charHeaders = [
     },
 ];
 
-const sheetID = '';
-const deployID = '';
+//this is for google claims implementation using my standard set up.
+//that means face claim, business claim with integrated jobs, face reserves, subplots with integrated claims and reserves, and discord webhooks for all of this
+//forms are in the source/js/templates/forms directory
+//the blank sheet can be duplicated from: 
+//sheet must be set to viewable with link, then put the id below
+//apps script must run through setup function, then deploy as a webapp, then put the deploy id below
+const sheetID = '1Tun8ddMReuDNAKPE0tASvB-f__13lkPK_dczmYbaGaM';
+const deployID = 'AKfycbxw_tC4jLP8gn66FtZdbU9SAli1RbMMhzstiN_QBvYAxSj5iTg7kvMzZL9p72d594uWjg';
 
+//these are the discord webhooks. do not include the full url, just the numeric and alphanumeric strings at the end (e.g., `numeric/alphanumeric`)
 const reserveLogs = ``;
 const businessLogs = ``;
 const claimLogs = ``;
@@ -129,6 +165,7 @@ const staffLogs = ``;
 const sortLogs = ``;
 const announceLogs = ``;
 
+//if using the base set up, these won't need to change
 const claims = `https://opensheet.elk.sh/${sheetID}/Claims`;
 const faceReserves = `https://opensheet.elk.sh/${sheetID}/FaceReserves`;
 const plotReserves = `https://opensheet.elk.sh/${sheetID}/PlotReserves`;
@@ -136,7 +173,10 @@ const members = `https://opensheet.elk.sh/${sheetID}/Members`;
 const plots = `https://opensheet.elk.sh/${sheetID}/Plots`;
 const businesses = `https://opensheet.elk.sh/${sheetID}/Businesses`;
 
+//default reserve days count
 const defaultReserve = 14;
+
+//default form error and success messages
 const successMessage = `<blockquote class="fullWidth">Submission successful!</blockquote>
 <button onclick="reloadForm(this)" type="button" class="fullWidth submit">Back to form</button>`;
 const activeResExists = `<blockquote class="fullWidth warning">Uh-oh! That's already reserved. Maybe we can help you find another option - reach out in the Discord for help!</blockquote>`;
@@ -144,6 +184,9 @@ const prevResExists = `<blockquote class="fullWidth warning">Uh-oh! You've reser
 const claimExists = `<blockquote class="fullWidth warning">Uh-oh! This is already in play! Maybe we can help you find another option - reach out in the Discord for help!</blockquote>`;
 const limitReached = `<blockquote class="fullWidth warning">Uh-oh! This role has limited spots and it looks like they're all taken and/or reserved at this moment!</blockquote>`;
 
+//default menus for ucp, store, modcp. these are the jcink versions
+//find the local versions in source/js/defaultsMenus.js
+//do not copy defaultsMenus.js to the jcink forum! it's lack of existence is what lets these three show through
 const jcinkUCPLinks = `<div class="accordion--trigger" data-category="account"><b>Account</b></div>
         <div class="accordion--content" data-category="account">
             <a href="?act=UserCP&CODE=01">Edit Profile</a>
