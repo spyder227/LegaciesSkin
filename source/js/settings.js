@@ -150,7 +150,7 @@ const charHeaders = [
 //this is for google claims implementation using my standard set up.
 //that means face claim, business claim with integrated jobs, face reserves, subplots with integrated claims and reserves, and discord webhooks for all of this
 //forms are in the source/js/templates/forms directory
-//the blank sheet can be duplicated from: 
+//the blank sheet can be duplicated from: https://docs.google.com/spreadsheets/d/1Tun8ddMReuDNAKPE0tASvB-f__13lkPK_dczmYbaGaM/edit?usp=sharing
 //sheet must be set to viewable with link, then put the id below
 //apps script must run through setup function, then deploy as a webapp, then put the deploy id below
 const sheetID = '1Tun8ddMReuDNAKPE0tASvB-f__13lkPK_dczmYbaGaM';
