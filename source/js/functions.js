@@ -60,7 +60,7 @@ function initCharacter(aesthetics, images, overflow, title, birthday, isLocal = 
 
     //Freeform Overflow
     if(overflow !== `` && overflow !== `<i>No Information</i>`) {
-        document.querySelector('[name="#freeform"] .scroll.accent').insertAdjacentHTML('beforeend', overflow);
+        document.querySelector('.clip-freeform-overflow').insertAdjacentHTML('beforeend', overflow);
     }
 
     //Tracker
@@ -120,14 +120,14 @@ function cpShift() {
 }
 function setUpAesthetics() {
     let aestheticsObj = {
-        'tall-1': document.querySelector('#field_7_input').value,
-        'tall-2': document.querySelector('#field_8_input').value,
-        'wide-1': document.querySelector('#field_9_input').value,
-        'square-1': document.querySelector('#field_10_input').value,
-        'square-2': document.querySelector('#field_11_input').value,
-        'square-3': document.querySelector('#field_12_input').value,
+        'tall-1': document.querySelector('#field_20_input').value,
+        'tall-2': document.querySelector('#field_21_input').value,
+        'wide-1': document.querySelector('#field_22_input').value,
+        'square-1': document.querySelector('#field_23_input').value,
+        'square-2': document.querySelector('#field_24_input').value,
+        'square-3': document.querySelector('#field_25_input').value,
     };
-    let aesthetics = getSelectText(document.querySelector('#field_2_input')).replace(' ', '');
+    let aesthetics = getSelectText(document.querySelector('#field_19_input')).replace(' ', '');
     return {aestheticsObj, aesthetics};
 }
 function ucpAesthetics() {

@@ -30,7 +30,6 @@ async function FillTracker(username, params = {}) {
         lockedclass: params.lockedMacroIdentifier || "[title=Closed]",
         lockedforums: params.archiveForumNames || [],
         lockedforumids: params.archiveForumIds || [],
-        indicators: params.indicators || ['<span style="font-family: roboto, verdana, arial, sans">ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ</span>', '<span style="font-family: roboto, verdana, arial, sans">ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¤</span>'],
         separator: params.separator || "|",
         username: username.replace(/&#([0-9]+);/g, (m, p1) => String.fromCharCode(p1)),
         trackerwrap: params.thisTracker || $('[data-clip="active"]'),
@@ -47,13 +46,6 @@ async function FillTracker(username, params = {}) {
         closedthreads: (params.completedThreads) || []
     }
     if (!config.includedforums.length) config.includedforums.push("all");
-    /*** END CONFIGURATION ***/
-    if (/^[-\w _\d]+$/.test(params.indicators[0])) {
-    params.indicators[0] = `<i class="${params.indicators[0]}"></i>`
-    }
-    if (/^[-\w _\d]+$/.test(params.indicators[1])) {
-        params.indicators[1] = `<i class="${params.indicators[1]}"></i>`
-    }
     
     /***  RUN THE SEARCH ***/
     
@@ -150,7 +142,6 @@ async function FillTracker(username, params = {}) {
             if (config.previousposters[thread_id]) {
             myturn = (lastPoster == config.previousposters[thread_id].replace(/&#([0-9]+);/g, (m, p1) => String.fromCharCode(p1))) ? 'Owing' : 'Caught Up';
             }
-            const symbol = (myturn == 'Caught Up') ? config.indicators[0] : config.indicators[1];
     
             let postDate = $(cells[7]).html();
             postDate = postDate.substr(0, postDate.indexOf('<br>'));

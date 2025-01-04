@@ -72,17 +72,17 @@ trackerParams = {
 }
 
 //should be plain numbers in a comma separated list, do not wrap in quotes
-const fullWidthFields = [23, 26, 2]; //for ucp that has been gridded, sets the field to span the full grid width
-const thirdWidthFields = [4, 5, 6, 13, 14, 15]; //for when using manual birthday fields and there are six columns with default being 1/2 width in ucp
+const fullWidthFields = [10]; //for ucp that has been gridded, sets the field to span the full grid width
+const thirdWidthFields = [3, 4, 5, 11, 12, 13]; //for when using manual birthday fields and there are six columns with default being 1/2 width in ucp
 const setHeightFields = []; //for when you want a text area field to allow some coding, apostrophes, etc but want it to look like a standard text input
 
 //toggle fields: account type, image type
-const toggleFields = createFieldArray([1, 2], true);
-const characterFields = createFieldArray([13, 14, 15, 24, 25, 26, 2, 7, 8, 9, 10, 11, 12, 16, 27]); //character only fields
+const toggleFields = createFieldArray([1, 19], true);
+const characterFields = createFieldArray([11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]); //character only fields
 
-const defaultImages = createFieldArray([10]); //default aesthetics set up
-const gridImages = createFieldArray([11, 7, 8]); //grid style aesthetics set up
-const mosaicImages = createFieldArray([9, 12]); //mosaic style aesthetic set up
+const defaultImages = createFieldArray([20]); //default aesthetics set up
+const gridImages = createFieldArray([21,23, 24]); //grid style aesthetics set up
+const mosaicImages = createFieldArray([22, 25]); //mosaic style aesthetic set up
 
 const avatarImageFields = createFieldArray([17, 18]); //which images are avatars, not aesthetics?
 
@@ -123,17 +123,17 @@ const allHeaders = [
 const charHeaders = [
     {
         sectionTitle: `Basics`,
-        insertBefore: 13,
+        insertBefore: 11,
         sectionDescription: ``,
     },
     {
         sectionTitle: `Details`,
-        insertBefore: 16,
+        insertBefore: 26,
         sectionDescription: ``,
     },
     {
         sectionTitle: `Plotting`,
-        insertBefore: 27,
+        insertBefore: 28,
         sectionDescription: ``,
     },
 ];
