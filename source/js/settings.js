@@ -1,13 +1,13 @@
 //channel name does not have to match, but it makes the most sense if it does
 //for the hook, do not include the full url, just the numeric and alphanumeric strings at the end (e.g., `numeric/alphanumeric`)
 const discordChannels = [
-	{title: `#test`, hook: `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`},
+	{title: `#channel`, hook: `hook`},
 ];
 
 //member alias and acquire the id by right clicking their name in discord and "copy user id"
 //if you don't see that option in the menu, you need to turn on developer mode
 const discordTags = [
-    {alias: `Lux`, id: `253627726886469642`},
+    {alias: `Name`, id: `ID`},
 ];
 
 //role name doesn't have to match, can be contextualized
@@ -25,6 +25,7 @@ const staffDiscordRole = `ID`;
 const uploads = `uploads2`;
 const siteName = `sitename`;
 const fileTypes = ['gif', 'jpg', 'jpeg', 'png'];
+const defaultSquare = 'https://picsum.photos/100';
 
 //this is for character sorting, highlighting the edge of the sorting related messages
 //the group name should by lowercase and should match what would appear in the Group column of the google sheet

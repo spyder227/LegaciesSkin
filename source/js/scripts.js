@@ -14,9 +14,57 @@ if(switcher !== null) {
     initSwitcher();
 }
 
+//quick login
+if(document.querySelector('body').classList.contains('g-2')) {
+    initQuickLogin();
+} else {
+    if($('#quick-login').length) {
+        $('#quick-login').remove();
+    }
+    $('#quick-login-clip').remove();
+}
+
+//remove empty tooltips
+$('*[title=""]').removeAttr('title');
+$('*[tooltip=""]').removeAttr('tooltip');
+if (typeof tippy === 'function') {
+    tippy(document.querySelectorAll('[title]'), {
+        content: (reference) => {
+	    function htmlDecode(input){
+		var e = document.createElement('div');
+		e.innerHTML = input;
+		return e.childNodes[0].nodeValue;
+	    }
+	    if(!reference.querySelector('.macro--button')) {
+                const title = reference.getAttribute('title');
+                reference.removeAttribute('title');
+		const stringified = JSON.stringify({title: title});
+		
+		if(reference.classList.contains('profile-link')) {
+                    return capitalize(htmlDecode(title));
+		} else {
+                    return htmlDecode(title);
+		}
+	    }
+        },
+        theme: 'godlybehaviour',
+        arrow: false
+    });
+}
+
 /********** Initializations **********/
 setTheme();
 setSize();
+initCopyLink();
+//init clipboards
+let clipboards = document.querySelectorAll('tag-code');
+let codes = document.querySelectorAll(`table[id='CODE-WRAP']`);
+if (clipboards.length > 0) {
+    initClipboard();
+}
+if (codes.length > 0) {
+    initCodebox();
+}
 
 /********** Window Click **********/
 document.querySelector('.invisibleEl').addEventListener('click', e => {

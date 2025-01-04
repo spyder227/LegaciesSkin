@@ -881,14 +881,14 @@ function splitProfile() {
     let headers = $('thead');
     headers.each(function (index, el) {
         if(index == headers.length - 1) {
-            $(this).nextUntil('tr:last-child').wrapAll(`<tbody class="ucp--section" data-section="${$(this)[0].dataset.section}"></tbody>`);
+            $(this).nextUntil('tr:last-child').wrapAll(`<tbody class="ucp--section fullWidth" data-section="${$(this)[0].dataset.section}"></tbody>`);
         } else {
-            $(this).nextUntil('thead').wrapAll(`<tbody class="ucp--section" data-section="${$(this)[0].dataset.section}"></tbody>`);
+            $(this).nextUntil('thead').wrapAll(`<tbody class="ucp--section fullWidth" data-section="${$(this)[0].dataset.section}"></tbody>`);
         }
     });
 }
 function insertCPHeader (title, field, description) {
-    let html = `<thead data-section="${cleanText(title)}"><tr class="ucp--header"><td>
+    let html = `<thead data-section="${cleanText(title)}" class="fullWidth"><tr class="ucp--header"><td>
         <div class="sticky">
             <div class="ucp--header-title" data-section="${cleanText(title)}">${title}</div>`;
     if(description) {

@@ -1,3 +1,5 @@
+@import '../global/mixins.scss';
+
 /*******************************
     Variables
 ********************************/
@@ -20,11 +22,12 @@
     --bg-overlay: rgba(0, 0, 0, 0.8);
 
     --size-alert-max-height: 80px;
-    --size-menu-height: 0;
+    --size-menu-height: 30px;
+    --size-menu-width: 30px;
     --size-store-image: 24px;
+    --size-switcher-image: 40px;
 
     @include mq-up(xs) {
-
         --size-alert-max-height: 150px;
     }
 }

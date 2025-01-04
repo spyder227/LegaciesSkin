@@ -3,6 +3,38 @@
 /*******************************
     Global
 ********************************/
+body {
+    padding: calc(var(--size-menu-height) + var(--space-lg)) var(--space-lg) var(--space-lg)  calc(var(--size-menu-width) + var(--space-lg));
+}
+
+.scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 100%;
+    padding-right: var(--space-md);
+    margin-right: calc(-1 * var(--space-md));
+    scrollbar-width: thin;
+    scrollbar-color: black transparent;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: black;
+    }
+
+    &.accent {
+        scrollbar-color: red transparent;
+
+        &::-webkit-scrollbar-thumb {
+            background: red;
+        }
+    }
+}
+
 .macro {
     &--button {
         &[onclick] {

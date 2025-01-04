@@ -84,13 +84,11 @@ function cpShift() {
 	    hideFields = characterFields
                     .concat(defaultImages)
                     .concat(gridImages)
-                    .concat(mosaicImages)
-                    .concat(singleRelFields)
-                    .concat(sectionRelFields),
+                    .concat(mosaicImages),
 	    showHeaders = allHeaders;
 
-	if(account == 'character') {
-        if(imageType === 'grid') {
+	if(account.toLowerCase() == 'character') {
+        if(imageType.toLowerCase() === 'grid') {
             showFields = characterFields
                         .concat(defaultImages)
                         .concat(gridImages);
@@ -98,7 +96,7 @@ function cpShift() {
             showHeaders = allHeaders
                         .concat(charHeaders);
             document.querySelector(defaultImages[0]).classList.remove('fullWidth');
-        } else if (imageType === 'mosaic') {
+        } else if (imageType.toLowerCase() === 'mosaic') {
             showFields = characterFields
                         .concat(defaultImages)
                         .concat(gridImages)
@@ -116,40 +114,20 @@ function cpShift() {
                         .concat(charHeaders);
             document.querySelector(defaultImages[0]).classList.add('fullWidth');
         }
-
-        specialSpecies.forEach(special => {
-            if (special.species === species) {
-                showFields = showFields.concat(special.fields);
-            } else {
-                hideFields = hideFields.concat(special.fields);
-            }
-        });
-
-        if (relationships === 'a') {
-            showFields = showFields.concat(singleRelFields);
-            hideFields = hideFields.concat(sectionRelFields);
-        } else {
-            hideFields = hideFields.concat(singleRelFields);
-            showFields = showFields.concat(sectionRelFields);
-        }
-    } else {
-        specialSpecies.forEach(special => {
-            hideFields = hideFields.concat(special.fields);
-        });
     }
     
     adjustCP(showFields, hideFields, showHeaders);
 }
 function setUpAesthetics() {
     let aestheticsObj = {
-        'tall-1': document.querySelector('#field_46_input').value,
-        'tall-2': document.querySelector('#field_47_input').value,
-        'wide-1': document.querySelector('#field_45_input').value,
-        'square-1': document.querySelector('#field_42_input').value,
-        'square-2': document.querySelector('#field_43_input').value,
-        'square-3': document.querySelector('#field_44_input').value,
+        'tall-1': document.querySelector('#field_7_input').value,
+        'tall-2': document.querySelector('#field_8_input').value,
+        'wide-1': document.querySelector('#field_9_input').value,
+        'square-1': document.querySelector('#field_10_input').value,
+        'square-2': document.querySelector('#field_11_input').value,
+        'square-3': document.querySelector('#field_12_input').value,
     };
-    let aesthetics = getSelectText(document.querySelector('#field_40_input')).replace(' ', '');
+    let aesthetics = getSelectText(document.querySelector('#field_2_input')).replace(' ', '');
     return {aestheticsObj, aesthetics};
 }
 function ucpAesthetics() {
@@ -165,11 +143,10 @@ function ucpAesthetics() {
 function ucpAvatars() {
     let avatarSample = document.querySelector('.ucp--description[data-section="Images"] .sample');
     let avatarObj = {
-        'tall': document.querySelector('#field_41_input').value,
-        'tall-2': document.querySelector('#field_79_input').value,
-        'wide': document.querySelector('#field_60_input').value,
+        'tall': document.querySelector('#field_17_input').value,
+        'wide': document.querySelector('#field_18_input').value,
     }
-    let { aesthetics, aestheticsObj } = ucpAesthetics();
+    let { aesthetics, aestheticsObj } = setUpAesthetics();
 
     let accType = getSelectText(document.querySelector('#field_1_input'));
     if(avatarSample) {
@@ -190,7 +167,6 @@ function ucpAvatars() {
 }
 function formatAvatars(images) {
     let imageHTML = `<span class="tall"><img src="${images['tall']}" title="Tall Avatar" alt="Tall Avatar" loading="lazy" /></span>
-    <span class="tall"><img src="${images['tall-2']}" title="Tall Member List" alt="Tall Member List (optional; will use the tall avatar if blank)" loading="lazy" /></span>
     <span class="wide"><img src="${images['wide']}" title="Wide Avatar" alt="Wide Avatar" loading="lazy" /></span>`;
     return imageHTML;
 }
