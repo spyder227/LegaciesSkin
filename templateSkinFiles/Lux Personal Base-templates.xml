@@ -178,7 +178,6 @@
         let defaultShow = `.active.character`;
 
         <% MEMBERLIST_ROWS %>
-console.log(accounts);
 
         populatePage(accounts);
 

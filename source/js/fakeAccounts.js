@@ -1,3 +1,61 @@
+/*member list row template:
+
+var age = calculateAge({
+    'year': `<!-- |field_13| -->`,
+    'month': `<!-- |field_14| -->`,
+    'day': `<!-- |field_15| -->`,
+});
+
+var ageClass = setAgeClass(age);
+
+var accountType = `<!-- |field_1| -->`.toLowerCase();
+if(staffGroups.includes(parseInt(`<!-- |g_id| -->`))) {
+    accountType = `staff`;
+}
+if(accountType === `member`) {
+    accountType = `writer`;
+}
+
+accounts.push({
+    universal: {
+        name: standardizeLower(`<!-- |member_name| -->`),
+        id: parseInt(`<!-- |id| -->`),
+        groupID: parseInt(`<!-- |g_id| -->`),
+        groupName: standardizeLower(`<!-- |group| -->`),
+        imageWide: `<!-- |field_18| -->`,
+        type: standardizeLower(accountType),
+        parentID: parseInt(`<!-- |parent_id| -->`),
+        posts: parseInt(`<!-- |posts| -->`),
+        dates: {
+            joined: `<!-- |joined| -->`,
+            lastActive: `<!-- |last_activity| -->`,
+            lastPost: `<!-- |last_post| -->`
+        }
+    },
+    character: {
+        pronouns: standardizeLower(`<!-- |field_24| -->`),
+        relationship: standardizeLower(`<!-- |field_25| -->`),
+        relationshipClass: standardizeLower(cleanText(`<!-- |field_25| -->`)),
+        age: age,
+        ageClass: ageClass,
+        location: standardizeLower(`<!-- |field_26| -->`),
+        locationClass: standardizeLower(cleanText(`<!-- |field_26| -->`)),
+        overview: `<!-- |field_27| -->`,
+    },
+    writer: {
+        aliasClass: standardizeLower(cleanText(`<!-- |field_3| -->`)),
+        alias: standardizeLower(`<!-- |field_3| -->`),
+        age: parseInt(`<!-- |field_19| -->`),
+        pronouns: standardizeLower(`<!-- |field_20| -->`),
+        timezone: standardizeLower(`<!-- |field_21| -->`),
+        contact: standardizeLower(`<!-- |field_22| -->`),
+        triggers: `<!-- |field_23| -->`,
+    }
+});
+
+*/
+
+
 const lipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
 const imageTall = `https://picsum.photos/500/800`;
 const imageWide = `https://picsum.photos/800/500`;
