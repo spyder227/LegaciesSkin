@@ -72,19 +72,19 @@ trackerParams = {
 }
 
 //should be plain numbers in a comma separated list, do not wrap in quotes
-const fullWidthFields = [1]; //for ucp that has been gridded, sets the field to span the full grid width
-const thirdWidthFields = []; //for when using manual birthday fields and there are six columns with default being 1/2 width in ucp
+const fullWidthFields = [23, 26, 2]; //for ucp that has been gridded, sets the field to span the full grid width
+const thirdWidthFields = [4, 5, 6, 13, 14, 15]; //for when using manual birthday fields and there are six columns with default being 1/2 width in ucp
 const setHeightFields = []; //for when you want a text area field to allow some coding, apostrophes, etc but want it to look like a standard text input
 
 //toggle fields: account type, image type
 const toggleFields = createFieldArray([1, 2], true);
-const characterFields = createFieldArray([]); //character only fields
+const characterFields = createFieldArray([13, 14, 15, 24, 25, 26, 2, 7, 8, 9, 10, 11, 12, 16, 27]); //character only fields
 
-const defaultImages = createFieldArray([]); //default aesthetics set up
-const gridImages = createFieldArray([]); //grid style aesthetics set up
-const mosaicImages = createFieldArray([]); //mosaic style aesthetic set up
+const defaultImages = createFieldArray([10]); //default aesthetics set up
+const gridImages = createFieldArray([11, 7, 8]); //grid style aesthetics set up
+const mosaicImages = createFieldArray([9, 12]); //mosaic style aesthetic set up
 
-const avatarImageFields = createFieldArray([]); //which images are avatars, not aesthetics?
+const avatarImageFields = createFieldArray([17, 18]); //which images are avatars, not aesthetics?
 
 //shouldn't need to change this
 const aestheticFields = {
@@ -111,39 +111,29 @@ const aestheticFields = {
 const allHeaders = [
     {
         sectionTitle: `Player`,
-        insertBefore: 0,
+        insertBefore: 1,
         sectionDescription: ``,
     },
     {
         sectionTitle: `Images`,
-        insertBefore: 0,
-        sectionDescription: ``,
-    },
-    {
-        sectionTitle: `Customization`,
-        insertBefore: 0,
+        insertBefore: 17,
         sectionDescription: ``,
     },
 ];
 const charHeaders = [
     {
         sectionTitle: `Basics`,
-        insertBefore: 0,
+        insertBefore: 13,
         sectionDescription: ``,
     },
     {
         sectionTitle: `Details`,
-        insertBefore: 0,
+        insertBefore: 16,
         sectionDescription: ``,
     },
     {
         sectionTitle: `Plotting`,
-        insertBefore: 0,
-        sectionDescription: ``,
-    },
-    {
-        sectionTitle: `Links`,
-        insertBefore: 0,
+        insertBefore: 27,
         sectionDescription: ``,
     },
 ];
