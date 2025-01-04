@@ -174,29 +174,30 @@ function initSwitcher() {
 function initAccordionActive() {
     const trackingCodes = ['code-alerts', 'code-50', 'code-26'];
     const settingsCodes = ['code-alerts_settings', 'code-04', 'code-02'];
-    const personalStoreCodes = ['store-inventory', 'store-donate_money', 'store-donate_item'];
+    const personalStoreCodes = ['store-inventory', 'store-donate_money', 'store-donate_item', 'store-useitem'];
     const staffStoreCodes = ['store-fine', 'store-do_edit_points', 'store-edit_points', 'store-do_staff_inventory', 'store-edit_inventory'];
     const modForumCodes = ['code-queue', 'code-reported', 'code-modlogs', 'code-prune'];
 
     let activeMenu = 'messages';
     pageClasses.forEach(pageClass => {
+        console.log(pageClass);
         if(pageType === 'Msg') {
             activeMenu = 'messages';
-        } else if(pageType === 'UserCP' && trackingCodes.contains(pageClass)) {
+        } else if(pageType === 'UserCP' && trackingCodes.includes(pageClass)) {
             activeMenu = 'tracking';
-        } else if(pageType === 'UserCP' && settingsCodes.contains(pageClass)) {
+        } else if(pageType === 'UserCP' && settingsCodes.includes(pageClass)) {
             activeMenu = 'settings';
-        } else if(pageType === 'UserCP') {
+        } else if(pageType === 'UserCP' && pageClass.includes('code')) {
             activeMenu = 'account';
-        } else if(pageType === 'store' && personalStoreCodes.contains(pageClass)) {
+        } else if(pageType === 'store' && personalStoreCodes.includes(pageClass)) {
             activeMenu = 'personal';
-        } else if(pageType === 'store' && staffStoreCodes.contains(pageClass)) {
+        } else if(pageType === 'store' && staffStoreCodes.includes(pageClass)) {
             activeMenu = 'staff';
-        } else if(pageType === 'store') {
+        } else if(pageType === 'store' && pageClass.includes('store-')) {
             activeMenu = 'shop';
-        } else if(pageType === 'modcp' && modForumCodes.contains(pageClass)) {
+        } else if(pageType === 'modcp' && modForumCodes.includes(pageClass)) {
             activeMenu = 'forumsposts';
-        } else if(pageType === 'modcp') {
+        } else if(pageType === 'modcp' && pageClass.includes('code')) {
             activeMenu = 'users';
         }
     });
@@ -698,8 +699,9 @@ function initDiscordTagging(location) {
         let topic = document.querySelector('.topic-title').innerText;
         let url = `${window.location.origin}${window.location.search}&view=getnewpost`;
 	    let message = ``;
-        var includes = [...new Set(Array.from(document.querySelectorAll('.post--left')).map(item => item.dataset.fullName))];
+        var includes = [...new Set(Array.from(document.querySelectorAll('.post')).map(item => item.dataset.fullName))];
         var characterList = ``;
+        console.log(document.querySelectorAll('.post'));
         includes.forEach((character, i) => {
             if(includes.length > 2 && i < includes.length && i !== 0) {
                 characterList += `, `;
@@ -713,8 +715,8 @@ function initDiscordTagging(location) {
             characterList += capitalize(character.toLowerCase()).trim();
         });
 
-        let playerNames = document.querySelectorAll('.tagging--writer');
-        let player = playerNames.length > 0 && playerNames[playerNames.length - 1] ? playerNames[playerNames.length - 1].innerText.toLowerCase().trim() : false;
+        let playerNames = Array.from(document.querySelectorAll('.post')).map(item => item.dataset.author);
+        let player = playerNames.length > 0 && playerNames[playerNames.length - 1] ? playerNames[playerNames.length - 1].toLowerCase().trim() : false;
         if(player) {
             message += `\nWritten by ${capitalize(player.toLowerCase().trim())}`;
         }
@@ -905,8 +907,8 @@ function toggleModCPMenu(e) {
 }
 function initUCPMenu() {
     document.querySelector('#ucpmenu').innerHTML = `<button class="macro--button" onclick="toggleUCPMenu(this)">
-        <i class="fa-solid fa-bars"></i>
-        <i class="fa-solid fa-xmark"></i>
+        <i class="fa-solid fa-bars open-button"></i>
+        <i class="fa-solid fa-xmark close-button"></i>
     </button>
     <div class="accordion">
         ${typeof localUCPLinks !== 'undefined' ? localUCPLinks : jcinkUCPLinks}
@@ -924,8 +926,8 @@ function initUCPMenu() {
 }
 function initStoreMenu() {
     document.querySelector('#ucpmenu').innerHTML = `<button class="macro--button" onclick="toggleUCPMenu(this)">
-        <i class="fa-solid fa-bars"></i>
-        <i class="fa-solid fa-xmark"></i>
+        <i class="fa-solid fa-bars open-button"></i>
+        <i class="fa-solid fa-xmark close-button"></i>
     </button>
     <div class="accordion">
         ${typeof localStoreLinks !== 'undefined' ? localStoreLinks : jcinkStoreLinks}
@@ -936,8 +938,8 @@ function initStoreMenu() {
 }
 function initModCPMenu() {
     document.querySelector('#modcp-menu').innerHTML = `<button class="macro--button" onclick="toggleModCPMenu(this)">
-        <i class="fa-solid fa-bars"></i>
-        <i class="fa-solid fa-xmark"></i>
+        <i class="fa-solid fa-bars open-button"></i>
+        <i class="fa-solid fa-xmark close-button"></i>
     </button>
     <div class="accordion">
         ${typeof localModCPLinks !== 'undefined' ? localModCPLinks : jcinkModCPLinks}

@@ -21,6 +21,37 @@
             <!--Profile-->
             <section class="profile"></section>
 
+            <script>
+                let ratings = [
+                    {'type': 'lang','value': 'All'},
+                    {'type': 'sex','value': 'With Limits'},
+                    {'type': 'vio','value': 'All'}
+                ];
+                let images = {
+                    'tall-1': `https://picsum.photos/250/500`,
+                    'tall-2': `https://picsum.photos/250/500`,
+                    'wide-1': `https://picsum.photos/500/250`,
+                    'square-1': `https://picsum.photos/500`,
+                    'square-2': `https://picsum.photos/500`,
+                    'square-3': `https://picsum.photos/500`,
+                };
+                let birthday = {
+                    'year': `1254`,
+                    'month': setMonth(`11`),
+                    'day': `19`,
+                }
+                
+                if(oocGroups.includes(`7`) ||
+                  (optGroups.includes(`7`) && `character`.toLowerCase() === `member`)
+                ) {
+                    initMember();
+                } else {
+                    initCharacter(`Mosaic`, images, `<i>No Information</i>`, `Christopher Reeves`, birthday, true);
+                }
+                
+                initProfile(`Christopher Reeves`, ratings);
+            </script>
+
             <!-- Copyright Information -->
             <div class="tableborder" align="center">
                 <div class="row4" style="font-size: 7.5pt; padding-top: 1px; padding-bottom: 1px; line-height: 8pt;">

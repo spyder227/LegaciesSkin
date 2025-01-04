@@ -286,7 +286,7 @@ function pullCharacterClaims(field) {
                     item.querySelector('blockquote').remove();
                 }
             });
-            form.querySelector('#clip-role-change').innerHTML = formatRoleChangesl(character);
+            form.querySelector('#clip-role-change').innerHTML = formatRoleChanges(character);
             form.querySelector('#clip-role-remove').innerHTML = formatRoleRemoval(character);
         } else {
             form.querySelectorAll('.ifRoleChange, .ifRoleRemove').forEach(item => {

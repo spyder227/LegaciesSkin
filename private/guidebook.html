@@ -28,17 +28,17 @@
             <section class="webpage">
                 <div class="webpage--menu">
                     <button class="macro--button" onclick="toggleListMenu(this)">
-                        <i class="fa-solid fa-bars"></i>
-                        <i class="fa-solid fa-xmark"></i>
+                        <i class="fa-solid fa-bars open-button"></i>
+                        <i class="fa-solid fa-xmark close-button"></i>
                     </button>
-                    <tab-labels class="accordion scroll">
+                    <tag-labels class="accordion scroll">
                         <tag-label class="tab-category accordion--trigger" data-category="info">
                             <span>Required Reading</span>
                         </tag-label>
                         <div class="tab-category accordion--content" data-category="info">
                             <a href="#formatting">Formatting Test</a><!--remove on launch-->
                             <a href="#etiquette">Etiquette</a>
-                            <a href="#plot">Plot</a>
+                            <a href="#site-plot">Plot</a>
                             <a href="#setting">Setting</a>
                             <a href="#groups">Standard Groups</a>
                             <a href="#credits">Credits</a>
@@ -61,7 +61,6 @@
                         <div class="tab-category accordion--content" data-category="registration">
                             <a href="#reserve-face">Reserve a Face</a>
                             <a href="#reserve-role">Reserve a Subplot Role</a>
-                            <a href="#species-request">Request a Species</a>
                             <a href="#add-business">Add a Business</a>
                             <a href="#sort">Get Sorted</a>
                             <a href="./connections.html#address">Register an Address</a>
@@ -93,7 +92,7 @@
                             <a href="#announce">Send Announcement</a>
                             <a href="#add-plot">Add Subplot</a>
                         </div>
-                    </tab-labels>
+                    </tag-labels>
                 </div>
                 <tag-tabset class="webpage--content">
                     <tag-tab class="tab-category" data-category="info">
@@ -126,7 +125,7 @@
                                     Rules
                                 </div>
                             </tag-tab>
-                            <tag-tab data-key="#plot">
+                            <tag-tab data-key="#site-plot">
                                 <div class="webpage--content-inner">
                                     Plot
                                 </div>

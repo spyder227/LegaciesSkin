@@ -1,13 +1,13 @@
 //channel name does not have to match, but it makes the most sense if it does
 //for the hook, do not include the full url, just the numeric and alphanumeric strings at the end (e.g., `numeric/alphanumeric`)
 const discordChannels = [
-	{title: `#channel`, hook: `hook code`},
+	{title: `#test`, hook: `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`},
 ];
 
 //member alias and acquire the id by right clicking their name in discord and "copy user id"
 //if you don't see that option in the menu, you need to turn on developer mode
 const discordTags = [
-    {alias: `Name`, id: `ID`},
+    {alias: `Lux`, id: `253627726886469642`},
 ];
 
 //role name doesn't have to match, can be contextualized
@@ -157,13 +157,13 @@ const sheetID = '1Tun8ddMReuDNAKPE0tASvB-f__13lkPK_dczmYbaGaM';
 const deployID = 'AKfycbxw_tC4jLP8gn66FtZdbU9SAli1RbMMhzstiN_QBvYAxSj5iTg7kvMzZL9p72d594uWjg';
 
 //these are the discord webhooks. do not include the full url, just the numeric and alphanumeric strings at the end (e.g., `numeric/alphanumeric`)
-const reserveLogs = ``;
-const businessLogs = ``;
-const claimLogs = ``;
-const modLogs = ``;
-const staffLogs = ``;
-const sortLogs = ``;
-const announceLogs = ``;
+const reserveLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
+const businessLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
+const claimLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
+const modLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
+const staffLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
+const sortLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
+const announceLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
 
 //if using the base set up, these won't need to change
 const claims = `https://opensheet.elk.sh/${sheetID}/Claims`;

@@ -28,17 +28,17 @@
             <section class="webpage">
                 <div class="webpage--menu">
                     <button class="macro--button" onclick="toggleListMenu(this)">
-                        <i class="fa-solid fa-bars"></i>
-                        <i class="fa-solid fa-xmark"></i>
+                        <i class="fa-solid fa-bars open-button"></i>
+                        <i class="fa-solid fa-xmark close-button"></i>
                     </button>
-                    <tab-labels class="accordion scroll">
+                    <tag-labels class="accordion scroll">
                         <div class="menu-filters">
                             <strong>Filter by Business Name</strong>
                             <input type="text" oninput="filterBusinesses(this)" placeholder="Business Name" style="margin-bottom: 10px;">
                             <strong>Filter by Employee Name</strong>
                             <input type="text" oninput="filterEmployees(this)" placeholder="Employee Name">
                         </div>
-                    </tab-labels>
+                    </tag-labels>
                 </div>
                 <tag-tabset class="webpage--content"></tag-tabset>
             </section>

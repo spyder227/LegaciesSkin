@@ -28,10 +28,10 @@
             <section class="webpage">
                 <div class="webpage--menu">
                     <button class="macro--button" onclick="toggleListMenu(this)">
-                        <i class="fa-solid fa-bars"></i>
-                        <i class="fa-solid fa-xmark"></i>
+                        <i class="fa-solid fa-bars open-button"></i>
+                        <i class="fa-solid fa-xmark close-button"></i>
                     </button>
-                    <tab-labels class="accordion scroll">
+                    <tag-labels class="accordion scroll">
                         <tag-label class="tab-category accordion--trigger" data-category="info">
                             <span>Information</span>
                         </tag-label>
@@ -62,7 +62,7 @@
                             <a href="#historical">Historical</a>
                             <a href="#local">Local</a>
                         </div>
-                    </tab-labels>
+                    </tag-labels>
                 </div>
                 <tag-tabset class="webpage--content">
                     <tag-tab class="tab-category" data-category="info">

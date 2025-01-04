@@ -19,7 +19,38 @@
 		
 
             <!--Profile-->
-            <section class="profile"></section>
+            <section class="profile g-4"></section>
+
+            <script>
+                let ratings = [
+                    {'type': 'lang','value': 'All'},
+                    {'type': 'sex','value': 'With Limits'},
+                    {'type': 'vio','value': 'All'}
+                ];
+                let images = {
+                    'tall-1': `<i>No Information</i>`,
+                    'tall-2': `<i>No Information</i>`,
+                    'wide-1': `<i>No Information</i>`,
+                    'square-1': `<i>No Information</i>`,
+                    'square-2': `<i>No Information</i>`,
+                    'square-3': `<i>No Information</i>`,
+                };
+                let birthday = {
+                    'year': `<i>No Information</i>`,
+                    'month': setMonth(`<i>No Information</i>`),
+                    'day': `<i>No Information</i>`,
+                }
+                
+                if(oocGroups.includes(`4`) ||
+                  (optGroups.includes(`4`) && `member`.toLowerCase() === `member`)
+                ) {
+                    initMember();
+                } else {
+                    initCharacter(`Mosaic`, images, `<i>No Information</i>`, `Lux`, birthday, true);
+                }
+                
+                initProfile(`Lux`, ratings);
+            </script>
 
             <!-- Copyright Information -->
             <div class="tableborder" align="center">

@@ -366,7 +366,7 @@ function formatDirectory(data, claims) {
         }
     });
 
-    document.querySelector('tab-labels.accordion').innerHTML = labels;
+    document.querySelector('tag-labels.accordion').innerHTML = labels;
     document.querySelector('tag-tabset.webpage--content').innerHTML = tabs;
 }
 function formatMemberInfo(member, claims) {
@@ -489,7 +489,7 @@ function formatBusinesses(data, claims) {
     tabs += formatTab(capitalize('self-employed', [' ', '-']), cleanText('self-employed'), formatSelfEmployed(employed));
     tabs += closeTabCategory();
 
-    document.querySelector('tab-labels.accordion').insertAdjacentHTML('beforeend', labels);
+    document.querySelector('tag-labels.accordion').insertAdjacentHTML('beforeend', labels);
     document.querySelector('tag-tabset.webpage--content').innerHTML = tabs;
 }
 function formatEmployees(claims, employer) {
@@ -720,14 +720,12 @@ function formatAddresses(characters, businesses) {
     });
 
     let sectionedAddresses = {
-        temperance: addresses.filter(item => item.address.region === 'temperance, ns'),
-        sydney: addresses.filter(item => item.address.region === 'sydney, ns'),
-        rural: addresses.filter(item => item.address.region === 'rural cape breton'),
+        location1: addresses.filter(item => item.address.region === 'location 1'),
+        location2: addresses.filter(item => item.address.region === 'location 2'),
     }
     let addressHTML = {
-        temperance: '',
-        sydney: '',
-        rural: '',
+        location1: '',
+        location2: '',
     }
 
     document.querySelectorAll('tag-tab[data-category="addresses"] [data-key]').forEach(tab => {

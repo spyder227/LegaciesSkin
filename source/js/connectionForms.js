@@ -23,7 +23,7 @@ if(document.querySelectorAll('.form-address').length > 0) {
         
             let address = {
                 region: getSelectText(region),
-                neighbourhood: getSelectText(neighbourhood) !== 'not applicable' ? getSelectText(neighbourhood) : '',
+                neighbourhood: getSelectText(neighbourhood),
                 street: getStandardValue(street),
                 house: getValue(house),
                 apartment: getValue(apartment),
@@ -143,10 +143,11 @@ function searchAddress(form, data) {
     document.querySelector('#lookup-results').innerHTML = html;
 }
 function formatRegion(region) {
+    console.log(region);
     return `${capitalize(region.split(', ')[0]).trim()}, ${region.split(', ')[1].toUpperCase().trim()}`;
 }
 function formatAddressString(address) {
-    return `${address.apartment !== '' ? `${address.apartment}-` : ``}${address.house} ${capitalize(address.street).trim()}${address.neighbourhood ? `, ${capitalize(address.neighbourhood).trim()}` : ''}, ${formatRegion(address.region)}`;
+    return `${address.apartment !== '' ? `${address.apartment}-` : ``}${address.house} ${capitalize(address.street).trim()}, ${capitalize(address.neighbourhood).trim()}, ${capitalize(address.region).trim()}`;
 }
 
 /***** Add Connections *****/
@@ -184,7 +185,8 @@ if(document.querySelector('#form-connection')) {
                 connection.location = getStandardValue(location);
             }
 
-            let connections = existing.Connections ? JSON.parse(existing.Connections) : [];
+            console.log(existing);
+            let connections = existing.Connections ? existing.Connections : [];
             connections.push(connection);
 
             let data = {
