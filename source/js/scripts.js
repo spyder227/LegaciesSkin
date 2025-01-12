@@ -122,7 +122,7 @@ if(pageType === 'Reg') {
     fancyBoxes();
     if(document.querySelector('input[name="agree"][type="checkbox"]')) {
         $('input[name="agree"][type="checkbox"]').wrap('<label class="input-wrap tos"></label>');
-        $('.input-wrap.tos').append('<div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div> <p>I agree to the terms of this registration, <b>I am at least 18 years of age,</b> and wish to proceed.</p>');
+        $('.input-wrap.tos').append(`<div class="fancy-input checkbox">${checkboxChecked}</div> <p>I agree to the terms of this registration, <b>I am at least 18 years of age,</b> and wish to proceed.</p>`);
     }
 }
 
@@ -153,7 +153,7 @@ if(pageType === 'ST') {
     });
     document.querySelectorAll(`#qr_open input[type="checkbox"]`).forEach(input => inputWrap(input));
     document.querySelectorAll('#qr_open .input-wrap').forEach(label => {
-        label.querySelector('input').insertAdjacentHTML('afterend', `<div class="fancy-input checkbox">x</div>`);
+        label.querySelector('input').insertAdjacentHTML('afterend', `<div class="fancy-input checkbox">${checkboxChecked}</div>`);
     });
     $('#qr_open .tablepad > input').wrapAll('<div class="qr_buttons"></div>');
 }
