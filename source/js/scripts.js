@@ -130,7 +130,7 @@ if(pageType === 'Reg') {
 if(pageType === 'SF') {
 	initForums();
     initTopicsWrap();
-    initTopicDescription('.topic--description');
+    initHighlightTags('.topic--description');
     initStickyBar();
 }
 

@@ -103,6 +103,60 @@ const aestheticFields = {
     }
 };
 
+//for member info autofil from google sheet
+const autofillFieldMapping = [
+	{
+		'jcink': 2,
+		'sheet': 'Member',
+	},
+	{
+		'jcink': 3,
+		'sheet': 'Pronouns',
+	},
+	{
+		'jcink': 5,
+		'sheet': 'Age',
+	},
+	{
+		'jcink': 6,
+		'sheet': 'Language',
+		checkRating: true,
+	},
+	{
+		'jcink': 7,
+		'sheet': 'Sex',
+		checkRating: true,
+	},
+	{
+		'jcink': 8,
+		'sheet': 'Violence',
+		checkRating: true,
+	},
+	{
+		'jcink': 4,
+		'sheet': 'Timezone',
+	},
+	{
+		'jcink': 9,
+		'sheet': 'Tense',
+		checkText: true,
+	},
+	{
+		'jcink': 10,
+		'sheet': 'POV',
+		checkText: true,
+	},
+	{
+		'jcink': 11,
+		'sheet': 'Frequency',
+		checkText: true,
+	},
+	{
+		'jcink': 12,
+		'sheet': 'Triggers',
+	}
+];
+
 //sets up a title and a description for each section of the ucp
 //insertBefore is the field number as a number, not a string
 //it will put the header and description before that input
@@ -149,13 +203,13 @@ const sheetID = '1Tun8ddMReuDNAKPE0tASvB-f__13lkPK_dczmYbaGaM';
 const deployID = 'AKfycbxw_tC4jLP8gn66FtZdbU9SAli1RbMMhzstiN_QBvYAxSj5iTg7kvMzZL9p72d594uWjg';
 
 //these are the discord webhooks. do not include the full url, just the numeric and alphanumeric strings at the end (e.g., `numeric/alphanumeric`)
-const reserveLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const businessLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const claimLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const modLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const staffLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const sortLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const announceLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
+const reserveLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
+const businessLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
+const claimLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
+const modLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
+const staffLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
+const sortLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
+const announceLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
 
 //if using the base set up, these won't need to change
 const claims = `https://opensheet.elk.sh/${sheetID}/Claims`;

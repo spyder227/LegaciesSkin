@@ -460,6 +460,19 @@ function initWebpages() {
 
     //accordions
     initAccordion();
+
+    if(document.querySelector('[data-expiry]')) {
+        setInterval(() => {
+            initExpiryCountdowns();
+        }, 1000);
+    }
+}
+function initExpiryCountdowns(selector = `[data-expiry]`) {
+    document.querySelectorAll(selector).forEach(item => {
+        let timestamp = item.dataset.timestamp;
+        let extension = item.dataset.extension;
+        item.innerText = setExpiry(timestamp, extension);
+    });
 }
 function toggleWarning(e) {
     e.closest('.webpage--warning').querySelector('.webpage--warning-text').classList.toggle('is-open');
@@ -571,6 +584,8 @@ function formatMarkdown(str, identifier, opening, closing) {
             } else {
                 return `${opening}${value}${closing}`;
             }
+        } else if(str.split(identifier).length !== index && value === '') {
+            return `${identifier}${identifier}`;
         }
       
     }).join('');
@@ -947,7 +962,7 @@ function initModCPMenu() {
 }
 
 /***** Topic List *****/
-function initTopicDescription(selector) {
+function initHighlightTags(selector) {
     document.querySelectorAll(selector).forEach(desc => {
         desc.innerHTML = desc.innerHTML.replaceAll('[', '<tag-highlight>').replaceAll(']', '</tag-highlight>');
     });
@@ -1572,6 +1587,48 @@ function carouselPageHash(e, tab, progressBarClass = null, wrapperClass = '.caro
 function carouselSetHash(hash) {
     window.location.hash = hash;
 }
+function autofillMemberData(e) {
+    e.innerText = 'Getting info...';
+    const parentId = parseInt(e.dataset.parent) !== 0 ? e.dataset.parent : e.dataset.account;
+
+        fetch(members)
+        .then((response) => response.json())
+        .then((data) => {
+            const existing = data.filter(item => item.AccountID === parentId)[0];
+        if(existing) {
+        autofillFieldMapping.forEach(field => {
+            let fieldInput = document.querySelector(`#field_${field.jcink}_input`);
+            let sheetValue = existing[field.sheet];
+            if(field.checkText) {
+            fieldInput.querySelectorAll('option').forEach(option => {
+                if(option.innerText.toLowerCase() === existing[field.sheet].toLowerCase()) {
+                    fieldInput.value = option.value;
+                }
+            });
+            } else if(field.checkRating) {
+            switch(existing[field.sheet]) {
+                case '3':
+                fieldInput.value = 'all';
+                break;
+                case '2':
+                fieldInput.value = 'limits';
+                break;
+                case '1':
+                fieldInput.value = 'mild';
+                break;
+                default:
+                fieldInput.value = 'unset';
+                break;
+            }
+            } else {
+                fieldInput.value = sheetValue;
+            }
+        });
+        }
+        }).then(() => {
+        e.innerText = 'Auto-fill Complete!';
+    });
+}
 
 /****** Forms ******/
 function getAccountID(field) {
@@ -1646,7 +1703,7 @@ function setExpiry(timestamp, extension) {
 
     reserveDate.setDate(reserveDate.getDate() + defaultReserve + parseInt(extension));
 
-    return `${days}D ${hours}H ${minutes}M`;
+    return `${days}D ${hours}H ${minutes}M ${seconds}S`;
 }
 function sendDiscordMessage(webhook, embedTitle, message, notification = null, color = null) {
     const request = new XMLHttpRequest();

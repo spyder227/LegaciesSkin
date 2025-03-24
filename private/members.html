@@ -141,7 +141,7 @@
                     // quick search regex
                     let qsRegex;
                     let elements = document.querySelectorAll(gridItem);
-                    
+
                     // init Isotope
                     $(window).on('load', function() {
                         $container.isotope({
@@ -189,7 +189,7 @@
                             if(param !== '') {
                                 let key = param;
                                 let values = queryParams[param].split('_');
-                
+
                                 if(document.querySelector(`[data-filter-group="${key}"]`) && values.length > 0) {
                                     document.querySelector(`[data-filter-group="${key}"] .all`).classList.remove('is-checked');
                                     values.forEach(value => {
@@ -207,7 +207,7 @@
                             setCustomFilter();
                         }
                     });
-                
+
                     //use value of input select to filter
                     let checkboxes = document.querySelectorAll(filterOptions);
                     checkboxes.forEach(checkbox => {
@@ -245,7 +245,7 @@
                             setCustomFilter();
                         });
                     });
-                
+
                     // use value of search field to filter
                     document.querySelector(typeSearch).addEventListener('keyup', e => {
                     appendSearchQuery('typesearch', e.currentTarget.value);
