@@ -25,6 +25,9 @@
             display: flex;
             flex-wrap: wrap;
             max-width: calc(100% - var(--size-menu));
+            font-size: var(--size-md);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
     }
     &--left {
@@ -50,6 +53,10 @@
         height: var(--size-menu-width);
         padding: 0;
         margin: 0;
+
+        i {
+            font-size: 10px;
+        }
 
         body.g-2 &.guestOnly,
         body.g-4 &.staffOnly {
